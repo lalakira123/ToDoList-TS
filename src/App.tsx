@@ -6,13 +6,13 @@ import { Task } from './components/Task/Task';
 import style from './App.module.css';
 import { Notepad, PlusCircle } from 'phosphor-react';
 
-interface Task {
+export interface TaskProps {
   content: string,
   isCheck: boolean
 }
 
 export function App() {
-  const [ tasks, setTasks ] = useState<Task[]>([]);
+  const [ tasks, setTasks ] = useState<TaskProps[]>([]);
   const [ newTask, setNewTask ] = useState('');
 
   function handleCreateTask(event: FormEvent) {
@@ -75,7 +75,10 @@ export function App() {
             {tasks.length > 0 ?
               tasks.map(task => {
                 return (
-                  <Task />
+                  <Task 
+                    content={task.content}
+                    isCheck={task.isCheck}
+                  />
                 )
               })
               :

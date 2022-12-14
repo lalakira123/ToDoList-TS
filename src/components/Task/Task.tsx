@@ -1,12 +1,14 @@
 import { Trash } from 'phosphor-react';
 import style from './Task.module.css';
 
-export function Task() {
+import { TaskProps } from '../../App';
+
+export function Task({ content, isCheck }: TaskProps) {
   return(
-    <article className={style.task}>
+    <article className={ isCheck ? style.taskChecked : style.task }>
       <div className={style.infoTask}>
         <input type="checkbox"/>
-        <p>Tarefinha a ser realizada</p>
+        <p>{content}</p>
       </div>
       <button className={style.trash}>
         <Trash />
