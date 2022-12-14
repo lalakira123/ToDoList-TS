@@ -8,8 +8,8 @@
 }
 
 .form {
-  display: grid;
-  grid-template-columns: 39rem 1fr;
+  display: flex;
+  justify-content: space-between;
 
   max-width: 100%;
   margin-top: -1.75rem;
@@ -19,6 +19,7 @@
 }
 
 .form > input {
+  width: 90%;
   background-color: var(--gray-500);
   color: var(--gray-300);
 
@@ -53,4 +54,47 @@
 
 .form > button:hover {
   background-color: var(--blue);
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.taskCreated {
+  color: var(--blue);
+}
+
+.taskCreated p span {
+  background-color: var(--gray-400);
+  color: var(--gray-200);
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+
+  padding: 0.125rem 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.taskDone {
+  color: var(--purple);
+}
+
+.taskDone p span {
+  background-color: var(--gray-400);
+  color: var(--gray-200);
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+
+  padding: 0.125rem 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.tasks {
+  margin: 1.5rem 0;
 }
