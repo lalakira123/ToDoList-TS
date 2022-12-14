@@ -2,7 +2,7 @@ import { Header } from './components/Header/Header';
 import { Task } from './components/Task/Task';
 
 import style from './App.module.css';
-import { PlusCircle } from 'phosphor-react';
+import { Notepad, PlusCircle } from 'phosphor-react';
 
 export function App() {
   return (
@@ -37,7 +37,11 @@ export function App() {
           </div>
 
           <div className={style.tasks}>
-            <Task />
+            <div className={style.warning}>
+              <Notepad size={"56px"}/>
+              <p><strong>Você ainda não tem tarefas cadastradas</strong></p>
+              <p>Crie tarefas e organize seus itens a fazer</p>
+            </div>
           </div>
         </main>
       </div>
