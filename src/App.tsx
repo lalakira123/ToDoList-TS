@@ -27,6 +27,18 @@ export function App() {
     setNewTask(event.target.value);
   }
 
+  function handleCheckTask(taskToRisk: string) {
+    const taskRisked = tasks.map(task => {
+      if( task.content == taskToRisk ) {
+        return { content: task.content, isCheck: !task.isCheck }
+      } else {
+        return { content: task.content, isCheck: task.isCheck }
+      }
+    });
+
+    setTasks(taskRisked);
+  }
+
   return (
     <>
       <Header />
@@ -76,8 +88,10 @@ export function App() {
               tasks.map(task => {
                 return (
                   <Task 
+                    key={task.content}
                     content={task.content}
                     isCheck={task.isCheck}
+                    onRisk={handleCheckTask}
                   />
                 )
               })
