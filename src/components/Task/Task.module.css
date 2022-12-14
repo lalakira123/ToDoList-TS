@@ -1,0 +1,104 @@
+.task {
+  max-width: 100%;
+
+  background-color: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  border-radius: 8px;
+  padding: 1rem;
+
+  font-size: 0.875rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.taskCheck {
+  max-width: 100%;
+
+  background-color: var(--gray-500);
+  border: 1px solid var(--gray-500);
+  border-radius: 8px;
+  padding: 1rem;
+
+  font-size: 0.875rem;
+  text-decoration: line-through;
+  color: var(--gray-300);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.trash {
+  display: flex;
+  background: transparent;
+  color: var(--gray-300);
+  font-size: 0.875rem;
+  border: none;
+}
+
+.trash:hover {
+  cursor: pointer;
+  background-color: var(--gray-400);
+  color: var(--danger);
+  padding: 0.1rem;
+  border-radius: 5px;
+}
+
+.infoTask {
+  display: flex;
+  align-items: flex-start;
+}
+
+.infoTask input[type=checkbox] {
+  appearance: none;
+
+  width: 1rem;
+  height: 1rem;
+
+  border: 2px solid var(--blue);
+  border-radius: 999px;
+  outline: none;
+
+  position: relative;
+}
+
+.infoTask input[type=checkbox]:hover {
+  cursor: pointer;
+  background-color: var(--blue-dark);
+  border: 2px solid var(--blue-dark);
+}
+
+.infoTask input[type=checkbox]:checked {
+  background-color: var(--purple-dark);
+  width: 1rem;
+  height: 1rem;
+
+  border: 2px solid var(--purple-dark);
+  border-radius: 999px;
+}
+
+.infoTask input[type=checkbox]:checked:hover {
+  background-color: var(--purple);
+}
+
+.infoTask input[type=checkbox]:checked::before {
+  content: "✔";
+  font-size: 0.8rem;
+  color: var(--gray-100);
+  position: absolute;
+  top: -3px;
+  left: 0px;
+}
+
+.infoTask p {
+  margin-left: 12px;
+  padding-right: 30px;
+  text-align: justify;
+  text-justify: auto;
+}
+
+.infoTask input[type=checkbox]:checked p {
+  text-decoration: line-through;
+}

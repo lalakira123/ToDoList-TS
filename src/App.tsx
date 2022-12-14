@@ -1,4 +1,5 @@
 import { Header } from './components/Header/Header';
+import { Task } from './components/Task/Task';
 
 import style from './App.module.css';
 import { PlusCircle } from 'phosphor-react';
@@ -36,7 +37,7 @@ export function App() {
           </div>
 
           <div className={style.tasks}>
-            
+            <Task />
           </div>
         </main>
       </div>
