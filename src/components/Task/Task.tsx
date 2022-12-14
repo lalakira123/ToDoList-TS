@@ -5,9 +5,10 @@ interface TaskProps {
   content: string,
   isCheck: boolean,
   onRisk: (content: string) => void
+  onDelete: (content: string) => void
 }
 
-export function Task({ content, isCheck, onRisk }: TaskProps) {
+export function Task({ content, isCheck, onRisk, onDelete }: TaskProps) {
   function handleRiskTask() {
     onRisk(content);
   }
@@ -18,7 +19,7 @@ export function Task({ content, isCheck, onRisk }: TaskProps) {
         <input type="checkbox" onClick={handleRiskTask}/>
         <p>{content}</p>
       </div>
-      <button className={style.trash}>
+      <button className={style.trash} onClick={() => onDelete(content)}>
         <Trash />
       </button>
     </article>

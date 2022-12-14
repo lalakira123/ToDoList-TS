@@ -39,6 +39,14 @@ export function App() {
     setTasks(taskRisked);
   }
 
+  function handleDeleteTask(taskToDelete: string) {
+    const tasksWithoutDeletedOne = tasks.filter(task => {
+      return task.content !== taskToDelete;
+    });
+
+    setTasks(tasksWithoutDeletedOne);
+  }
+
   return (
     <>
       <Header />
@@ -92,6 +100,7 @@ export function App() {
                     content={task.content}
                     isCheck={task.isCheck}
                     onRisk={handleCheckTask}
+                    onDelete={handleDeleteTask}
                   />
                 )
               })
