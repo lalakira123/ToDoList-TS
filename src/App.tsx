@@ -1,20 +1,45 @@
+import { ChangeEvent, FormEvent, useState } from 'react';
+
 import { Header } from './components/Header/Header';
 import { Task } from './components/Task/Task';
 
 import style from './App.module.css';
 import { Notepad, PlusCircle } from 'phosphor-react';
 
+interface Task {
+  content: string,
+  isCheck: boolean
+}
+
 export function App() {
+  const [ tasks, setTasks ] = useState<Task[]>([]);
+  const [ newTask, setNewTask ] = useState('');
+
+  function handleCreateTask(event: FormEvent) {
+    event.preventDefault();
+
+    setTasks([...tasks, { content: newTask, isCheck: false }]);
+
+    setNewTask('');
+  }
+
+  function handleChangeNewTask(event: ChangeEvent<HTMLInputElement>) {
+    setNewTask(event.target.value);
+  }
+
   return (
     <>
       <Header />
 
       <div className={style.wrapper}>
-        <form className={style.form}>
+        <form onSubmit={handleCreateTask} className={style.form}>
           <input 
             placeholder='Adicione uma nova tarefa'
+            onChange={handleChangeNewTask}
+            value={newTask}
+            required
           />
-          <button>
+          <button type='submit' disabled={newTask.length == 0}>
             Criar
             <PlusCircle size={'1.25rem'}/>
           </button>
@@ -25,23 +50,41 @@ export function App() {
             <div className={style.taskCreated}>
               <p>
                 Tarefas criadas
-                <span>5</span>
+                <span>{tasks.length}</span>
               </p>
             </div>
             <div className={style.taskDone}>
               <p>
                 Concluídas
-                <span>2 de 5</span>
+                <span>
+                  {
+                    tasks.filter(task => {
+                      return task.isCheck
+                    }).length 
+                  }
+                  {' '}de{' '} 
+                  {
+                    tasks.length
+                  }
+                </span>
               </p>
             </div>
           </div>
 
           <div className={style.tasks}>
-            <div className={style.warning}>
-              <Notepad size={"56px"}/>
-              <p><strong>Você ainda não tem tarefas cadastradas</strong></p>
-              <p>Crie tarefas e organize seus itens a fazer</p>
-            </div>
+            {tasks.length > 0 ?
+              tasks.map(task => {
+                return (
+                  <Task />
+                )
+              })
+              :
+              <div className={style.warning}>
+                <Notepad size={"56px"}/>
+                <p><strong>Você ainda não tem tarefas cadastradas</strong></p>
+                <p>Crie tarefas e organize seus itens a fazer</p>
+              </div>
+            }
           </div>
         </main>
       </div>
